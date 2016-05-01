@@ -30,7 +30,7 @@ short_description: Gather facts from a Webfaction machine
 description:
     - Gather facts about applications, databases, websites and domains form a Webfaction machine
 author: Pascal Bach (@bachp)
-version_added: "2.0"
+version_added: "2.2"
 notes:
     - "You can run playbooks that use this on a local machine, or on a Webfaction host, or elsewhere, since the scripts use the remote webfaction API - the location is not important."
     - See `the webfaction API <http://docs.webfaction.com/xmlrpc-api/>`_ for more info.
@@ -60,6 +60,25 @@ EXAMPLES = '''
       login_name={{webfaction_user}}
       login_password={{webfaction_passwd}}
       machine={{webfaction_machine}}
+'''
+
+RETURN = '''
+webfaction_apps:
+    description: List of applications currently existing
+    returned: always but can be empty
+    type: list
+webfaction_dbs:
+    description: List of databases currently existing
+    returned: always but can be empty
+    type: list
+webfaction_domains:
+    description: List of domains currently existing
+    returned: always but can be empty
+    type: list
+webfaction_websites:
+    description: List of websites currently existing
+    returned: always but can be empty
+    type: list
 '''
 
 import xmlrpclib
